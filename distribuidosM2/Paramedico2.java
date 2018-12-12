@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package distribuidos2;
 
 /**
  *
  * @author Inception10
  */
 public class Paramedico2 {
-    
+
 }

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package distribuidos;
 /**
  *
  * @author Inception10
@@ -14,12 +13,12 @@ public class Distribuidos {
      * @param args the command line arguments
      */
         // TODO code application logic here
-	public static void main(String args[]) 
-	{ 
+	public static void main(String args[])
+	{
 		Servidor servidor = new Servidor(5000);
                 Thread t= new Thread(servidor);
                 t.start();
         }
-        
-    
+
+
 }

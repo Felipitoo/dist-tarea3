@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package distribuidos2;
 
 /**
  *
@@ -16,10 +15,10 @@ public class Distribuidos2 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Cliente2 client = new Cliente2("localhost",5000,"prioridad,5002-18");
+        Cliente2 client = new Cliente2("localhost",5000,"prioridad,5001-18");
         Thread s = new Thread (client);
         s.start();
-    
+
 }
-    
+
 }
