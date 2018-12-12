@@ -3,21 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package distribuidos;
+package distribuidos2;
 import java.net.*;
 import java.io.*;
 /**
  *
  * @author Inception10
  */
-public class Cliente implements Runnable {
+public class Cliente2 implements Runnable {
     private Socket socket            = null; 
     private DataOutputStream out     = null;
     private Integer port;
     private String mensaje;
     private String address;
+    private String tipo;
     
-    public Cliente(String addr, Integer prt, String men){
+    public Cliente2(String addr, Integer prt, String men){
         this.address=addr;
         this.port=prt;
         this.mensaje=men;

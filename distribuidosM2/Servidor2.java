@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package distribuidos;
+package distribuidos2;
 import java.io.*;
 import java.net.*;
 import java.util.*;
@@ -11,7 +11,7 @@ import java.util.*;
  *
  * @author Inception10
  */
-public class Servidor implements Runnable {
+public class Servidor2 implements Runnable {
     private Socket          socket   = null; 
     private ServerSocket    server   = null; 
     private DataInputStream in       =  null;
@@ -20,7 +20,7 @@ public class Servidor implements Runnable {
     private Map <String,Integer> prioridades;
     
     
-    public Servidor(Integer puert){
+    public Servidor2(Integer puert){
         this.port=puert;
     }
     @Override
@@ -64,10 +64,9 @@ public class Servidor implements Runnable {
             }}
     
     public void send_prioridad(String dest,Integer prt,int prior){
-        Cliente client = new Cliente(dest,prt,Integer.toString(prior));
+        Cliente2 client = new Cliente2(dest,prt,Integer.toString(prior));
         Thread s = new Thread (client);
         s.start();
     }
     
     }
-

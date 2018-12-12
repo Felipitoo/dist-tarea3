@@ -16,10 +16,10 @@ public class Distribuidos2 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Cliente client = new Cliente("192.168.0.18",5000);
-        //Cliente client2 = new Cliente("192.168.0.18",5000);
+        Cliente2 client = new Cliente2("localhost",5000,"prioridad,5002-18");
         Thread s = new Thread (client);
         s.start();
-    }
+    
+}
     
 }
