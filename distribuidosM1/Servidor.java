@@ -8,7 +8,7 @@ import java.net.*;
 import java.util.*;
 /**
  *
- * @author Inception10
+ * @author Felipito
  */
 public class Servidor implements Runnable {
     private Socket          socket   = null;
@@ -17,7 +17,9 @@ public class Servidor implements Runnable {
     private Integer port;
     private String[] cont_msj;
     private Map <String,Integer> prioridades;
-
+    private Integer[] destinos = {5001,5002,5003};
+    private Integer i;
+    private Integer prioridad;
 
     public Servidor(Integer puert){
         this.port=puert;
@@ -31,7 +33,12 @@ public class Servidor implements Runnable {
             System.out.print(ex);
         }
         System.out.println("Server started");
-        System.out.println("Waiting for a client ...");
+        System.out.println("Enviando prioridad...");
+        while (i<destinos.length){
+            send_prioridad("localhost", destinos[i], "prioridad,"+Integer.toString(port)+"-"+Integer.toString(prioridad));
+            i++;
+        }
+
         while(true){
             try
                 {
@@ -62,8 +69,8 @@ public class Servidor implements Runnable {
                 }
             }}
 
-    public void send_prioridad(String dest,Integer prt,int prior){
-        Cliente client = new Cliente(dest,prt,Integer.toString(prior));
+    public void send_prioridad(String dest,Integer prt,String prior){
+        Cliente client = new Cliente(dest,prt,prior);
         Thread s = new Thread (client);
         s.start();
     }

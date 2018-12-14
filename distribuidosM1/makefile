@@ -1,7 +1,11 @@
-all: Enfermero.class Cliente.class Medico.class Paramedico.class Servidor.class Distribuidos.class
+all: JSONRead.class Enfermero.class Cliente.class Medico.class Paramedico.class Servidor.class Distribuidos.class
 
 Enfermero.class: Enfermero.java
 	javac Enfermero.java
+
+JSONRead.class: JSONRead.java
+		javac -classpath json-simple-1.1.1.jar JSONRead.java
+
 
 Cliente.class: Cliente.java
 	javac Cliente.java
@@ -20,6 +24,9 @@ Distribuidos.class: Distribuidos.java
 
 Distribuidos:
 	java Distribuidos
+
+JSON:
+	java JSONRead
 
 clean :
 	rm -f *.class
