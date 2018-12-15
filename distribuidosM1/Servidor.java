@@ -11,15 +11,15 @@ import java.util.*;
  * @author Felipito
  */
 public class Servidor implements Runnable {
-    private Socket          socket   = null;
-    private ServerSocket    server   = null;
-    private DataInputStream in       =  null;
+    private Socket          socket   ;
+    private ServerSocket    server   ;
+    private DataInputStream in       ;
     private Integer port;
     private String[] cont_msj;
     private Map <String,Integer> prioridades;
     private Integer[] destinos = {5001};
     private Integer i=0;
-    private Integer prioridad;
+    private Integer prioridad=15;
     private Scanner sc = new Scanner(System.in);
     private String decision;
     private Cliente client;
@@ -43,11 +43,8 @@ public class Servidor implements Runnable {
         if(decision.equalsIgnoreCase("y")){
             System.out.println("Enviando prioridad...");
             while (i<destinos.length){
-                client = new Cliente("localhost",destinos[i],port,"prioridad,"+Integer.toString(port)+"-"+Integer.toString(prioridad));
-                System.out.println(client.origen);
-                System.out.println("Enviando prioridad...");
-                Thread s = new Thread (client);
-                s.start();
+                Cliente client1 = new Cliente("localhost",destinos[i],port,"prioridad,"+Integer.toString(port)+"-"+Integer.toString(prioridad));
+                client1.start();
                 i++;
             }
         }

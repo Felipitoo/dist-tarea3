@@ -5,17 +5,20 @@
  */
 import java.net.*;
 import java.io.*;
+import java.util.*;
+
 /**
  *
  * @author Inception10
  */
 public class Cliente implements Runnable {
-    private Socket socket            = null;
-    private DataOutputStream out     = null;
+    private Socket socket            ;
+    private DataOutputStream out     ;
     private Integer port;
     private String mensaje;
     private String address;
-    public Integer origen;
+    private Integer origen;
+    private String name = "Thread";
 
     public Cliente(String addr, Integer prt,Integer ori, String men){
         this.address=addr;
@@ -46,5 +49,10 @@ public class Cliente implements Runnable {
             System.out.println(i);
         }
     }
+    public void start(){
+            Thread c = new Thread (this, name);
+            c.start ();
+    }
+
 
 }
