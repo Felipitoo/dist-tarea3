@@ -8,15 +8,21 @@ import java.net.*;
 import java.util.*;
 /**
  *
- * @author Inception10
+ * @author Felipito
  */
 public class Servidor2 implements Runnable {
-    private Socket          socket   = null;
-    private ServerSocket    server   = null;
-    private DataInputStream in       =  null;
+    private Socket          socket   ;
+    private ServerSocket    server   ;
+    private DataInputStream in       ;
     private Integer port;
     private String[] cont_msj;
     private Map <String,Integer> prioridades;
+    private Integer[] destinos = {5000};
+    private Integer i=0;
+    private Integer prioridad=13;
+    private Scanner sc = new Scanner(System.in);
+    private String decision;
+    
 
 
     public Servidor2(Integer puert){
@@ -31,7 +37,19 @@ public class Servidor2 implements Runnable {
             System.out.print(ex);
         }
         System.out.println("Server started");
-        System.out.println("Waiting for a client ...");
+        System.out.println("Desea comenzar coordinación: Y/N");
+        decision = sc.nextLine();
+        if(decision.equalsIgnoreCase("y")){
+            System.out.println("Enviando prioridad...");
+            while (i<destinos.length){
+                Cliente2 client = new Cliente2("localhost",destinos[i],port,"prioridad,"+Integer.toString(port)+"-"+Integer.toString(prioridad));
+                Thread s = new Thread (client);
+                s.start();
+                i++;
+            }
+        }
+        System.out.println("Prioridad enviada a todos los otros hospitales");
+
         while(true){
             try
                 {
@@ -49,7 +67,6 @@ public class Servidor2 implements Runnable {
                         System.out.println("La prioridad es "+ cont_msj[1].split("-")[1]); //Se asume que el mensaje de prioridad es de la forma TIPO;ORIGEN-PRIORIDAD
                         prioridades.put(cont_msj[1].split("-")[0],Integer.parseInt(cont_msj[1].split("-")[1]));// Se realizan Splits correspondientes para saber los datos del msj Tipo=prioridad
                     }
-                    System.out.println(prioridades.get("5001"));
                     System.out.println("Closing connection");
 
                     // close connection
@@ -62,10 +79,5 @@ public class Servidor2 implements Runnable {
                 }
             }}
 
-    public void send_prioridad(String dest,Integer prt,int prior){
-        Cliente2 client = new Cliente2(dest,prt,Integer.toString(prior));
-        Thread s = new Thread (client);
-        s.start();
-    }
 
     }

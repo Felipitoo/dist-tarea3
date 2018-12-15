@@ -49,10 +49,6 @@ public class Cliente implements Runnable {
             System.out.println(i);
         }
     }
-    public void start(){
-            Thread c = new Thread (this, name);
-            c.start ();
-    }
 
 
 }

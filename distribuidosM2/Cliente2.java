@@ -5,30 +5,33 @@
  */
 import java.net.*;
 import java.io.*;
+import java.util.*;
+
 /**
  *
  * @author Inception10
  */
 public class Cliente2 implements Runnable {
-    private Socket socket            = null;
-    private DataOutputStream out     = null;
+    private Socket socket            ;
+    private DataOutputStream out     ;
     private Integer port;
     private String mensaje;
     private String address;
-    private String tipo;
+    private Integer origen;
+    private String name = "Thread";
 
-    public Cliente2(String addr, Integer prt, String men){
+    public Cliente2(String addr, Integer prt,Integer ori, String men){
         this.address=addr;
         this.port=prt;
         this.mensaje=men;
+        this.origen=ori;
 
     }
     @Override
     public void run(){
         try
-        {
+        {   System.out.println("Connected");
             socket = new Socket(address, port);
-            System.out.println("Connected");
             // sends output to the socket
             out    = new DataOutputStream(socket.getOutputStream());
             out.writeUTF(this.mensaje);
@@ -38,6 +41,7 @@ public class Cliente2 implements Runnable {
         }
         catch(UnknownHostException u)
         {
+            System.out.println("fallo la conexion");
             System.out.println(u);
         }
         catch(IOException i)
@@ -45,5 +49,6 @@ public class Cliente2 implements Runnable {
             System.out.println(i);
         }
     }
+
 
 }

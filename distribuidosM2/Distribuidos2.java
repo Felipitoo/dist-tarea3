@@ -15,9 +15,9 @@ public class Distribuidos2 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Cliente2 client = new Cliente2("localhost",5000,"prioridad,5001-18");
-        Thread s = new Thread (client);
-        s.start();
+        Servidor2 servidor = new Servidor2(5001);
+        Thread t= new Thread(servidor);
+        t.start();
 
 }
 
