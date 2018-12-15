@@ -17,10 +17,10 @@ Paramedico.class: Paramedico.java
 	javac Paramedico.java
 
 Servidor.class: Servidor.java
-	javac Servidor.java
+	javac -classpath . Servidor.java
 
 Distribuidos.class: Distribuidos.java
-		javac Distribuidos.java
+	javac Distribuidos.java
 
 Distribuidos:
 	java Distribuidos

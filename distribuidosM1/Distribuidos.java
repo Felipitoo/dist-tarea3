@@ -18,6 +18,11 @@ public class Distribuidos {
 		Servidor servidor = new Servidor(5000);
                 Thread t= new Thread(servidor);
                 t.start();
+                Cliente client = new Cliente("localhost",5001,5000,"prioridad,"+Integer.toString(5001)+"-"+Integer.toString(15));
+
+                System.out.println("Enviando prioridad...");
+                Thread s = new Thread (client);
+                s.start();
         }
 
 

@@ -17,9 +17,14 @@ public class Servidor implements Runnable {
     private Integer port;
     private String[] cont_msj;
     private Map <String,Integer> prioridades;
-    private Integer[] destinos = {5001,5002,5003};
-    private Integer i;
+    private Integer[] destinos = {5001};
+    private Integer i=0;
     private Integer prioridad;
+    private Scanner sc = new Scanner(System.in);
+    private String decision;
+    private Cliente client;
+    
+
 
     public Servidor(Integer puert){
         this.port=puert;
@@ -33,11 +38,20 @@ public class Servidor implements Runnable {
             System.out.print(ex);
         }
         System.out.println("Server started");
-        System.out.println("Enviando prioridad...");
-        while (i<destinos.length){
-            send_prioridad("localhost", destinos[i], "prioridad,"+Integer.toString(port)+"-"+Integer.toString(prioridad));
-            i++;
+        System.out.println("Desea comenzar coordinación: Y/N");
+        decision = sc.nextLine();
+        if(decision.equalsIgnoreCase("y")){
+            System.out.println("Enviando prioridad...");
+            while (i<destinos.length){
+                client = new Cliente("localhost",destinos[i],port,"prioridad,"+Integer.toString(port)+"-"+Integer.toString(prioridad));
+                System.out.println(client.origen);
+                System.out.println("Enviando prioridad...");
+                Thread s = new Thread (client);
+                s.start();
+                i++;
+            }
         }
+        System.out.println("Prioridad enviada a todos los otros hospitales");
 
         while(true){
             try
@@ -56,7 +70,6 @@ public class Servidor implements Runnable {
                         System.out.println("La prioridad es "+ cont_msj[1].split("-")[1]); //Se asume que el mensaje de prioridad es de la forma TIPO;ORIGEN-PRIORIDAD
                         prioridades.put(cont_msj[1].split("-")[0],Integer.parseInt(cont_msj[1].split("-")[1]));// Se realizan Splits correspondientes para saber los datos del msj Tipo=prioridad
                     }
-                    System.out.println(prioridades.get("5001"));
                     System.out.println("Closing connection");
 
                     // close connection
@@ -69,10 +82,5 @@ public class Servidor implements Runnable {
                 }
             }}
 
-    public void send_prioridad(String dest,Integer prt,String prior){
-        Cliente client = new Cliente(dest,prt,prior);
-        Thread s = new Thread (client);
-        s.start();
-    }
 
     }
