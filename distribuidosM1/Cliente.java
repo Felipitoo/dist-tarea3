@@ -18,7 +18,8 @@ public class Cliente implements Runnable {
     private String mensaje;
     private String address;
     private Integer origen;
-    private String name = "Thread";
+    private DataOutputStream devuelve;
+
 
     public Cliente(String addr, Integer prt,Integer ori, String men){
         this.address=addr;
@@ -45,8 +46,20 @@ public class Cliente implements Runnable {
             System.out.println(u);
         }
         catch(IOException i)
-        {
+        {   
+            try{
+            socket = new Socket(address,origen);
+            devuelve= new DataOutputStream(socket.getOutputStream());
+            devuelve.writeUTF("muerto,"+Integer.toString(port)+"-algo");
+            devuelve.flush();
+            devuelve.close();
+            socket.close();
+            System.out.println("asdasdas");
             System.out.println(i);
+            }
+            catch(IOException l){
+                System.out.println(l);
+            }
         }
     }
 
