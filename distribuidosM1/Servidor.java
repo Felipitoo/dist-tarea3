@@ -178,69 +178,8 @@ public class Servidor implements Runnable {
 			//manejo de error
 		} catch (ParseException e) {
 			//manejo de error
-		}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        }
+        
         prioridades= new HashMap<>();
         try {
             server = new ServerSocket(port);
