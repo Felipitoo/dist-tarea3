@@ -58,7 +58,7 @@ public class Servidor implements Runnable {
                 JSONObject paramedic= (JSONObject) blog.get(i);
                 long exp= (Long) paramedic.get("experiencia");
 				long est= (Long) paramedic.get("estudios");
-                Paramed.add(new Paramedico((String) paramedic.get("id"),(String) paramedic.get("nombre"),(String) paramedic.get("apellido"), est, exp));
+                Paramed.add(new Paramedico( (Long) paramedic.get("id"),(String) paramedic.get("nombre"),(String) paramedic.get("apellido"), est, exp));
 			    i++;
 			}
 
@@ -68,7 +68,7 @@ public class Servidor implements Runnable {
                 JSONObject doc= (JSONObject) temas.get(i);
                 long exp= (Long) doc.get("experiencia");
                 long est= (Long) doc.get("estudios");
-                Docs.add(new Medico((String) doc.get("id"),(String) doc.get("nombre"),(String) doc.get("apellido"),est,exp));
+                Docs.add(new Medico((Long) doc.get("id"),(String) doc.get("nombre"),(String) doc.get("apellido"),est,exp));
         	    i++;
       	}
 
@@ -78,7 +78,7 @@ public class Servidor implements Runnable {
 				JSONObject nurse= (JSONObject) inicio.get(i);
                 long exp= (Long) nurse.get("experiencia");
 				long est= (Long) nurse.get("estudios");
-				Enfer.add(new Enfermero((String) nurse.get("id"),(String) nurse.get("nombre"),(String) nurse.get("apellido"),est,exp));
+				Enfer.add(new Enfermero((Long) nurse.get("id"),(String) nurse.get("nombre"),(String) nurse.get("apellido"),est,exp));
                 i++;
 			}
 

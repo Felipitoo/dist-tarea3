@@ -9,12 +9,12 @@
  * @author Inception10
  */
 public class Enfermero {
-    String ID;
+    long ID;
     String name;
     String last_name;
     long est;
     long exp;
-    public Enfermero(String iden,String nm,String ap,long estud,long exper){
+    public Enfermero(long iden,String nm,String ap,long estud,long exper){
         this.ID=iden;
         this.name=nm;
         this.last_name=ap;
