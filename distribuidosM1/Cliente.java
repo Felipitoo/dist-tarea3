@@ -50,7 +50,7 @@ public class Cliente implements Runnable {
             try{
             socket = new Socket(address,origen);
             devuelve= new DataOutputStream(socket.getOutputStream());
-            devuelve.writeUTF("muerto,"+Integer.toString(port)+"-algo");
+            devuelve.writeUTF("muerto,"+Integer.toString(port)+"-algo"); // Notifica que esta muerto el servidor al que queira llegar
             devuelve.flush();
             devuelve.close();
             socket.close();
