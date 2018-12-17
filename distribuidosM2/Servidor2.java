@@ -106,7 +106,6 @@ public class Servidor2 implements Runnable {
                                 s.start();
                                 i++;
                             }
-                        soy_yo=1;
                         coordinacion=1;
                         jefazo=Integer.toString(port);
                         }

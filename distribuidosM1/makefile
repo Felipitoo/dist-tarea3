@@ -17,13 +17,13 @@ Paramedico.class: Paramedico.java
 	javac Paramedico.java
 
 Servidor.class: Servidor.java
-	javac -classpath . Servidor.java
+	javac -classpath .:json-simple-1.1.1.jar Servidor.java
 
 Distribuidos.class: Distribuidos.java
 	javac Distribuidos.java
 
 Distribuidos:
-	java Distribuidos
+	java -classpath .:json-simple-1.1.1.jar Distribuidos
 
 JSON:
 	java JSONRead
